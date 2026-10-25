@@ -451,11 +451,16 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;
         <div class="field"><label for="f-need">What do you need?</label>
           <select id="f-need"><option>Not sure yet, review my site</option><option>A new website</option><option>Fix my current website</option><option>Show up better on Google</option><option>Monthly updates</option></select></div>
         <div class="field full"><label for="f-msg">Anything else? <span>(optional)</span></label><textarea id="f-msg" placeholder="What you do, where you work, what's frustrating you about your site."></textarea></div>
+        <input type="text" id="f-hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <p class="err full" id="f-err" hidden>Add your name, your business name, and a phone or email so we can reach you.</p>
-        <div class="field full"><button class="btn btn-primary" type="submit" style="justify-self:start">Request my free review</button></div>
-        <div class="sent" id="sent" hidden>
-          <strong>Almost done: send your note.</strong>
-          <p>Your email app should open with your note ready to send. If it didn't, copy the note and email it to six18web@gmail.com. We reply within one business day.</p>
+        <div class="field full"><button class="btn btn-primary" type="submit" id="f-submit" style="justify-self:start">Request my free review</button></div>
+        <div class="sent" id="sent" role="status" hidden>
+          <strong>Thanks, your request is in.</strong>
+          <p>We'll look at your site and Google listing and reply within one business day. Keep an eye on your inbox (and spam folder, just in case).</p>
+        </div>
+        <div class="sent" id="sent-fail" role="alert" hidden>
+          <strong>That didn't go through.</strong>
+          <p>Something blocked the form. Copy your note below and email it to six18web@gmail.com, and we'll reply within one business day.</p>
           <textarea id="sent-text" readonly aria-label="Your message"></textarea>
           <div class="row"><button class="btn btn-primary" type="button" id="copy-msg">Copy message</button><a class="btn btn-ghost" id="mail-msg" href="#">Open in email</a></div>
         </div>
@@ -527,14 +532,39 @@ document.querySelectorAll('[data-copy]').forEach(btn => btn.addEventListener('cl
   copyText(val, btn, btn.previousElementSibling);
 }));
 
-/* Lead form: builds a message the visitor sends by text or email */
+/* Lead form: sends to six18web@gmail.com through FormSubmit; falls back to email if blocked */
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/six18web@gmail.com';
 const form = document.getElementById('lead');
-form.addEventListener('submit', e => {
+form.addEventListener('submit', async e => {
   e.preventDefault();
   const v = id => document.getElementById(id).value.trim();
   const ok = v('f-name') && v('f-biz') && (v('f-phone') || v('f-email'));
   document.getElementById('f-err').hidden = !!ok;
   if (!ok) return;
+  if (v('f-hp')) return; /* spam bot filled the hidden field */
+  const btn = document.getElementById('f-submit');
+  btn.disabled = true; btn.textContent = 'Sending…';
+  try {
+    const res = await fetch(FORM_ENDPOINT, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+      body: JSON.stringify({
+        _subject: 'Free website review: ' + v('f-biz'),
+        _template: 'table',
+        _replyto: v('f-email') || undefined,
+        Name: v('f-name'), Business: v('f-biz'), Phone: v('f-phone'), Email: v('f-email'),
+        'Current site': v('f-site'), 'Looking for': v('f-need'), Notes: v('f-msg')
+      })
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || String(data.success) !== 'true') throw new Error(data.message || 'failed');
+    form.querySelectorAll('.field').forEach(f => f.hidden = true);
+    document.getElementById('sent').hidden = false;
+    document.getElementById('sent').scrollIntoView({behavior:'smooth', block:'nearest'});
+    return;
+  } catch (err) {
+    btn.disabled = false; btn.textContent = 'Request my free review';
+  }
   const text = [
     `Free review request for ${SITE.name}`,
     `Name: ${v('f-name')}`,
@@ -548,9 +578,8 @@ form.addEventListener('submit', e => {
   const box = document.getElementById('sent-text');
   box.value = text;
   document.getElementById('mail-msg').href = 'mailto:' + encodeURIComponent(SITE.email) + '?subject=' + encodeURIComponent('Free website review: ' + v('f-biz')) + '&body=' + encodeURIComponent(text);
-  document.getElementById('sent').hidden = false;
-  window.location.href = document.getElementById('mail-msg').href;
-  document.getElementById('sent').scrollIntoView({behavior:'smooth', block:'nearest'});
+  document.getElementById('sent-fail').hidden = false;
+  document.getElementById('sent-fail').scrollIntoView({behavior:'smooth', block:'nearest'});
 });
 document.getElementById('copy-msg').addEventListener('click', e => copyText(document.getElementById('sent-text').value, e.currentTarget, document.getElementById('sent-text')));
 </script>
