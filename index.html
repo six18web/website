@@ -532,8 +532,18 @@ document.querySelectorAll('[data-copy]').forEach(btn => btn.addEventListener('cl
   copyText(val, btn, btn.previousElementSibling);
 }));
 
-/* Lead form: sends to six18web@gmail.com through FormSubmit; falls back to email if blocked */
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/six18web@gmail.com';
+/* Lead form: posts into the "Six18 Web – Review Requests" Google Form (responses land in the linked Google Sheet).
+   If a field is renamed or added in the Google Form, update the entry IDs below. */
+const FORM_ENDPOINT = 'https://docs.google.com/forms/d/e/1FAIpQLScylhmbYntFLCd5gkzJQ0wdYOxk01Bv5mk4QVKf6PaYSDNwhA/formResponse';
+const FORM_FIELDS = {
+  'f-name':  'entry.1475555693',  /* Name */
+  'f-biz':   'entry.1764585247',  /* Business */
+  'f-phone': 'entry.474048312',   /* Phone */
+  'f-email': 'entry.570045242',   /* Email */
+  'f-site':  'entry.539808713',   /* Current website or Facebook */
+  'f-need':  'entry.1875138850',  /* Looking for */
+  'f-msg':   'entry.499495201'    /* Notes */
+};
 const form = document.getElementById('lead');
 form.addEventListener('submit', async e => {
   e.preventDefault();
@@ -545,19 +555,11 @@ form.addEventListener('submit', async e => {
   const btn = document.getElementById('f-submit');
   btn.disabled = true; btn.textContent = 'Sending…';
   try {
-    const res = await fetch(FORM_ENDPOINT, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
-      body: JSON.stringify({
-        _subject: 'Free website review: ' + v('f-biz'),
-        _template: 'table',
-        _replyto: v('f-email') || undefined,
-        Name: v('f-name'), Business: v('f-biz'), Phone: v('f-phone'), Email: v('f-email'),
-        'Current site': v('f-site'), 'Looking for': v('f-need'), Notes: v('f-msg')
-      })
-    });
-    const data = await res.json().catch(() => ({}));
-    if (!res.ok || String(data.success) !== 'true') throw new Error(data.message || 'failed');
+    const body = new URLSearchParams();
+    Object.entries(FORM_FIELDS).forEach(([id, entry]) => body.append(entry, v(id)));
+    /* Google Forms doesn't send a readable reply to other sites ("no-cors"),
+       so a network error is the only failure we can detect. */
+    await fetch(FORM_ENDPOINT, { method: 'POST', mode: 'no-cors', body });
     form.querySelectorAll('.field').forEach(f => f.hidden = true);
     document.getElementById('sent').hidden = false;
     document.getElementById('sent').scrollIntoView({behavior:'smooth', block:'nearest'});
