@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Six18 Web | Small Business Websites &amp; Local SEO</title>
+<meta name="description" content="Websites that make your phone ring. Web design, website fixes, and local SEO for small businesses, built in the 618 (Edwardsville &amp; Glen Carbon, IL) for shops everywhere.">
+<link rel="canonical" href="https://six18web.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Six18 Web | Websites that make your phone ring">
+<meta property="og:description" content="Web design, website fixes, and local SEO for small businesses. Free 10-minute site review.">
+<meta property="og:url" content="https://six18web.com/">
+<meta name="theme-color" content="#13213B">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
+<meta property="og:image" content="https://six18web.com/favicon.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Six18 Web","url":"https://six18web.com/","email":"six18web@gmail.com","description":"Web design, website fixes, and local SEO for small businesses.","areaServed":["Edwardsville, IL","Glen Carbon, IL","United States"],"sameAs":["https://www.facebook.com/six18web","https://www.instagram.com/six18web","https://www.tiktok.com/@six18.web","https://x.com/six18web"]}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: hi-vis job-site signage. Navy bands, safety-orange accents, a working phone mockup as the hero proof. */
+:root{
+  --bg:#F2F4F7;
+  --surface:#FFFFFF;
+  --ink:#121B2E;
+  --muted:#4A5568;
+  --line:#D5DBE5;
+  --band:#13213B;
+  --band-ink:#EEF2F8;
+  --band-muted:#A9B6CC;
+  --accent:#F26A0A;
+  --accent-ink:#FFFFFF;
+  --accent-soft:#FFE6D3;
+  --good:#1F8A4C;
+  --bad:#C2352B;
+  --display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+  --radius:10px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0C1322;--surface:#141E33;--ink:#E8EDF5;--muted:#A3AFC4;--line:#26334D;
+  --band:#08101F;--band-ink:#EEF2F8;--band-muted:#9AA8C0;
+  --accent:#FF7B24;--accent-ink:#1A0E04;--accent-soft:#3A2110;--good:#41C27A;--bad:#F06A5F;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0C1322;--surface:#141E33;--ink:#E8EDF5;--muted:#A3AFC4;--line:#26334D;
+  --band:#08101F;--band-ink:#EEF2F8;--band-muted:#9AA8C0;
+  --accent:#FF7B24;--accent-ink:#1A0E04;--accent-soft:#3A2110;--good:#41C27A;--bad:#F06A5F;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--ink);font:400 1rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--band)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.05;margin:0;text-wrap:balance}
+h2{font-size:clamp(1.9rem,4.4vw,3rem);font-weight:850;font-stretch:112%;letter-spacing:-.01em}
+h3{font-size:1.25rem;font-weight:750;font-stretch:105%}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.eyebrow{font:600 .75rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.lede{color:var(--muted);font-size:1.075rem;max-width:62ch}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font:700 1rem/1 var(--body);padding:.95rem 1.3rem;border-radius:999px;border:2px solid transparent;text-decoration:none;cursor:pointer;transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-ghost{border-color:currentColor;background:transparent;color:inherit}
+section{padding-block:clamp(56px,9vw,104px)}
+
+/* header */
+.site-head{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--band);color:var(--band-ink);border-bottom:1px solid rgba(255,255,255,.06)}
+.site-head .wrap{display:flex;align-items:center;gap:1rem;padding-block:.8rem}
+.logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;font:850 1.15rem/1 var(--display);font-stretch:118%;letter-spacing:.01em}
+.logo-mark{height:30px;padding:0 .45rem;border-radius:7px;background:var(--accent);display:grid;place-items:center;color:var(--band);font:900 .95rem/1 var(--display);font-stretch:100%;letter-spacing:.02em}
+.nav{display:flex;gap:1.4rem;margin-left:auto;font-weight:600;font-size:.95rem}
+.nav a{text-decoration:none;color:var(--band-muted)}
+.nav a:hover{color:var(--band-ink)}
+.head-call{margin-left:1rem;padding:.65rem 1rem;font-size:.9rem}
+@media (max-width:760px){.nav{display:none}.head-call{margin-left:auto}}
+
+/* hero */
+.hero{background:var(--band);color:var(--band-ink);padding-block:clamp(40px,7vw,88px) clamp(48px,8vw,96px);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(32px,5vw,64px);align-items:center}
+@media (max-width:880px){.hero .wrap{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(2.4rem,6.4vw,4.6rem);font-weight:900;font-stretch:120%;letter-spacing:-.015em;margin-top:1rem}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero .lede{color:var(--band-muted);margin-top:1.25rem}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.towns{margin-top:2rem;font:400 .8rem/1.6 var(--mono);color:var(--band-muted);letter-spacing:.04em}
+.towns b{color:var(--band-ink);font-weight:600}
+
+/* phone mockup */
+.phone-col{display:flex;flex-direction:column;align-items:center;gap:1rem;min-width:0}
+.toggle{display:inline-flex;background:rgba(255,255,255,.08);border-radius:999px;padding:4px}
+.toggle button{font:700 .85rem/1 var(--body);color:var(--band-muted);background:transparent;border:0;padding:.6rem 1.1rem;border-radius:999px;cursor:pointer}
+.toggle button[aria-pressed="true"]{background:var(--band-ink);color:var(--band)}
+.phone{width:min(300px,100%);aspect-ratio:9/18.5;max-width:100%;border-radius:38px;background:#05080F;padding:12px;box-shadow:0 30px 60px rgba(0,0,0,.45),inset 0 0 0 2px #2A3550}
+.screen{height:100%;border-radius:28px;overflow:hidden;background:#fff;color:#1b1b1b;display:flex;flex-direction:column;font-family:var(--body)}
+.urlbar{display:flex;align-items:center;gap:6px;margin:10px 10px 0;padding:8px 10px;border-radius:12px;background:#EEF0F3;font:500 11px/1 var(--mono);color:#333}
+.urlbar .warn{color:#B3261E;font-weight:600}
+.urlbar .lock{color:#1F7A44}
+.page{flex:1;overflow:hidden;padding:12px;display:flex;flex-direction:column;gap:8px}
+/* before state */
+.old .banner{background:#3B5998;color:#fff;font:700 15px/1.2 "Times New Roman",serif;padding:10px;text-align:center}
+.old .navrow{display:flex;gap:6px;font:400 9px/1 "Times New Roman",serif;color:#00E;text-decoration:underline;justify-content:center}
+.old .tiny{font:400 9px/1.35 "Times New Roman",serif;color:#333}
+.old .imgph{height:70px;background:repeating-linear-gradient(45deg,#ddd 0 6px,#eee 6px 12px);display:grid;place-items:center;font:400 8px/1 Arial;color:#888}
+.old .count{font:700 10px/1.3 Arial;color:#666;text-align:center}
+.old .foot{margin-top:auto;font:400 8px/1 Arial;color:#999;text-align:center}
+/* after state */
+.new .brand{font:850 18px/1.05 var(--display);font-stretch:110%;color:#13213B}
+.new .tag{font-size:11.5px;color:#4A5568}
+.new .hero-img{height:96px;border-radius:12px;background:linear-gradient(135deg,#13213B,#2C4373);display:flex;align-items:flex-end;padding:10px;color:#fff;font:700 12px/1.2 var(--body)}
+.new .call{display:flex;align-items:center;justify-content:center;gap:6px;background:#F26A0A;color:#fff;font:700 13px/1 var(--body);padding:12px;border-radius:999px}
+.new .quote{display:flex;align-items:center;justify-content:center;border:1.5px solid #13213B;color:#13213B;font:700 12px/1 var(--body);padding:10px;border-radius:999px}
+.new .chips{display:flex;flex-wrap:wrap;gap:5px}
+.new .chips span{font:600 9.5px/1 var(--body);background:#EEF2F8;color:#13213B;padding:5px 7px;border-radius:999px}
+.new .stars{font:600 11px/1.3 var(--body);color:#13213B}
+.issues{width:min(300px,100%);display:flex;flex-direction:column;gap:.35rem;font:500 .8rem/1.35 var(--mono);color:var(--band-muted);min-height:5.6em}
+.issues li{list-style:none;display:flex;gap:.5rem}
+.issues{padding:0;margin:0}
+.issues .x{color:#FF8A80}.issues .ok{color:#6EE7A0}
+
+/* problems */
+.problems-head{display:grid;gap:1rem;max-width:760px}
+.problems{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.25rem;margin-top:2.5rem}
+@media (max-width:860px){.problems{grid-template-columns:1fr}}
+.problem{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;display:flex;flex-direction:column;gap:.75rem;min-width:0}
+.problem .sym{font:600 .78rem/1 var(--mono);color:var(--bad);letter-spacing:.04em}
+.problem p{color:var(--muted)}
+.problem .fix{margin-top:auto;padding-top:.75rem;border-top:1px dashed var(--line);font-weight:600;color:var(--ink)}
+.problem .fix::before{content:"What we do: ";color:var(--accent)}
+
+/* checkup */
+.checkup{background:var(--surface);border-block:1px solid var(--line)}
+.checkup .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(28px,5vw,64px);align-items:start}
+@media (max-width:860px){.checkup .wrap{grid-template-columns:1fr}}
+.checks{display:flex;flex-direction:column;gap:.6rem;margin:0;padding:0}
+.check{list-style:none}
+.check label{display:grid;grid-template-columns:28px minmax(0,1fr);gap:.85rem;align-items:start;padding:1rem 1.1rem;border:1.5px solid var(--line);border-radius:var(--radius);cursor:pointer;background:var(--bg);transition:border-color .15s}
+.check input{appearance:none;width:24px;height:24px;border:2px solid var(--muted);border-radius:6px;margin:2px 0 0;display:grid;place-items:center;cursor:pointer;background:var(--surface)}
+.check input:checked{background:var(--good);border-color:var(--good)}
+.check input:checked::after{content:"";width:7px;height:12px;border:solid #fff;border-width:0 3px 3px 0;transform:translateY(-1px) rotate(45deg)}
+.check input:checked + span{color:var(--ink)}
+.check label:has(input:checked){border-color:var(--good)}
+.check strong{display:block;font-weight:700}
+.check small{display:block;color:var(--muted);font-size:.9rem;margin-top:.15rem}
+.score{margin-top:1.25rem;padding:1.25rem 1.4rem;border-radius:var(--radius);background:var(--band);color:var(--band-ink);display:flex;flex-wrap:wrap;gap:1rem;align-items:center;justify-content:space-between}
+.score-num{font:900 2.4rem/1 var(--display);font-stretch:115%;font-variant-numeric:tabular-nums}
+.score-num span{color:var(--band-muted);font-size:1.2rem}
+.score-msg{flex:1 1 220px;min-width:0;color:var(--band-muted)}
+.score-msg b{color:var(--band-ink)}
+
+/* pricing */
+.group-label{margin-top:2.5rem;font:600 .78rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.1rem}
+.pricing-grid.monthly{grid-template-columns:repeat(2,minmax(0,1fr));max-width:760px}
+@media (max-width:860px){.pricing-grid,.pricing-grid.monthly{grid-template-columns:1fr}}
+.plan{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:1.5rem;display:flex;flex-direction:column;gap:.9rem;min-width:0}
+.plan.feature{border:2px solid var(--accent);position:relative}
+.plan .badge{position:absolute;top:-12px;left:1.25rem;background:var(--accent);color:var(--accent-ink);font:700 .7rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:.4rem .6rem;border-radius:999px}
+.price{font:900 2.2rem/1 var(--display);font-stretch:112%;font-variant-numeric:tabular-nums}
+.price small{font:500 .85rem/1 var(--body);color:var(--muted);font-stretch:100%}
+.plan .for{color:var(--muted);font-size:.95rem}
+.plan ul{margin:0;padding:0;display:flex;flex-direction:column;gap:.45rem;font-size:.95rem}
+.plan li{list-style:none;display:grid;grid-template-columns:18px minmax(0,1fr);gap:.5rem}
+.plan li::before{content:"";width:8px;height:8px;margin-top:.55em;border-radius:2px;background:var(--accent)}
+.price-note{margin-top:1.25rem;color:var(--muted);font-size:.9rem}
+
+/* process */
+.process{background:var(--band);color:var(--band-ink)}
+.process .lede{color:var(--band-muted)}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:2.75rem;counter-reset:step}
+@media (max-width:900px){.steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:2rem}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}}
+.step{padding:0 1.25rem 0 0;border-top:2px solid rgba(255,255,255,.14);padding-top:1.25rem;min-width:0;position:relative}
+.step::before{counter-increment:step;content:counter(step,decimal-leading-zero);position:absolute;top:-1px;left:0;width:56px;border-top:2px solid var(--accent);font:600 .8rem/1 var(--mono);color:var(--accent);padding-top:1.25rem;margin-top:-1px}
+.step h3{margin-top:2rem}
+.step p{color:var(--band-muted);margin-top:.5rem;font-size:.95rem}
+.step .when{display:inline-block;margin-top:.75rem;font:500 .75rem/1 var(--mono);color:var(--band-ink);background:rgba(255,255,255,.08);padding:.4rem .55rem;border-radius:6px}
+
+/* local + faq */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,6vw,80px)}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+.local p + p{margin-top:1rem}
+.local p{color:var(--muted);max-width:60ch}
+.area{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.5rem}
+.area span{font:500 .82rem/1 var(--mono);border:1px solid var(--line);background:var(--surface);padding:.5rem .7rem;border-radius:6px}
+.area span.home{border-color:var(--accent);color:var(--accent)}
+details{border-bottom:1px solid var(--line);padding-block:1.05rem}
+details:first-of-type{border-top:1px solid var(--line)}
+summary{cursor:pointer;font-weight:700;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:400 1.4rem/1 var(--mono);color:var(--accent)}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);margin-top:.6rem;max-width:62ch}
+
+/* contact */
+.contact{background:var(--surface);border-top:1px solid var(--line)}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(32px,5vw,64px)}
+@media (max-width:860px){.contact .wrap{grid-template-columns:1fr}}
+.direct{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.direct-row{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem}
+.direct-row .lbl{font:600 .72rem/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);width:100%}
+.direct-row .val{font:700 1.3rem/1.2 var(--display);font-stretch:108%;user-select:all;word-break:break-word}
+.copy{font:600 .78rem/1 var(--body);border:1px solid var(--line);background:var(--bg);color:var(--ink);padding:.45rem .7rem;border-radius:999px;cursor:pointer}
+form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+@media (max-width:560px){form{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:.35rem;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-weight:600;font-size:.9rem}
+.field label span{color:var(--muted);font-weight:400}
+input[type=text],input[type=email],input[type=tel],input[type=url],select,textarea{font:400 1rem/1.4 var(--body);color:var(--ink);background:var(--bg);border:1.5px solid var(--line);border-radius:8px;padding:.75rem .85rem;width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+textarea{min-height:110px;resize:vertical}
+.err{color:var(--bad);font-size:.85rem;grid-column:1/-1}
+.sent{grid-column:1/-1;background:var(--accent-soft);border-radius:var(--radius);padding:1.25rem;display:flex;flex-direction:column;gap:.75rem}
+.sent textarea{background:var(--surface);min-height:150px;font-family:var(--mono);font-size:.85rem}
+.sent .row{display:flex;flex-wrap:wrap;gap:.6rem}
+footer{background:var(--band);color:var(--band-muted);padding-block:2rem;font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+.socials{display:flex;flex-wrap:wrap;gap:1.1rem}
+.socials a{color:var(--band-ink);text-decoration:none;font-weight:600}
+.socials a:hover{color:var(--accent)}
+.direct-socials{display:flex;flex-wrap:wrap;gap:.5rem}
+.direct-socials a{font:600 .85rem/1 var(--body);text-decoration:none;border:1px solid var(--line);background:var(--bg);padding:.55rem .8rem;border-radius:999px}
+.direct-socials a:hover{border-color:var(--accent);color:var(--accent)}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Six18 Web home"><span class="logo-mark" aria-hidden="true">618</span><span data-bind="name">Six18 Web</span></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#fixes">What we fix</a>
+      <a href="#checkup">Free check</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-primary head-call" href="#contact">Free review</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Web design &amp; local SEO · Built in the 618</p>
+        <h1>Your customers search on their phones. <em>Make sure they find you.</em></h1>
+        <p class="lede">We build and fix websites for Edwardsville and Glen Carbon businesses: secure, fast on a phone, a call button that works, and set up to show up when someone nearby searches for what you do.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#contact">Get a free 10-minute review</a>
+          <a class="btn btn-ghost" href="#checkup">Check your site yourself</a>
+        </div>
+        <p class="towns">Based in <b>Edwardsville &amp; Glen Carbon, IL</b> · Working with small businesses <b>nationwide</b></p>
+      </div>
+      <div class="phone-col">
+        <div class="toggle" role="group" aria-label="Show website before or after">
+          <button type="button" id="btn-before" aria-pressed="true">Before</button>
+          <button type="button" id="btn-after" aria-pressed="false">After</button>
+        </div>
+        <div class="phone" aria-live="polite">
+          <div class="screen" id="screen-before">
+            <div class="urlbar"><span class="warn">⚠ Not secure</span><span>yourshop-online.net</span></div>
+            <div class="page old">
+              <div class="banner">Welcome To Our Website!!</div>
+              <div class="navrow"><span>Home</span><span>About</span><span>Services</span><span>Contact</span></div>
+              <div class="imgph">image not found</div>
+              <p class="tiny">We are a family owned business serving the area for many years. Please call the office for more information about our services and pricing. Our hours may vary.</p>
+              <p class="count">0 Completed Projects · 0 Happy Customers</p>
+              <p class="tiny">Call the office: 618-XXX-XXXX</p>
+              <p class="foot">© 2019 All Rights Reserved</p>
+            </div>
+          </div>
+          <div class="screen" id="screen-after" hidden>
+            <div class="urlbar"><span class="lock">🔒</span><span>yourshop.com</span></div>
+            <div class="page new">
+              <p class="brand">Your Shop<br>Roofing &amp; Exteriors</p>
+              <p class="tag">Edwardsville &amp; Glen Carbon, IL · Free inspections</p>
+              <div class="hero-img">Storm damage? We work with your insurance.</div>
+              <div class="call">📞 Tap to call</div>
+              <div class="quote">Request a free quote</div>
+              <div class="chips"><span>Roof replacement</span><span>Gutters</span><span>Siding</span><span>Insurance claims</span></div>
+              <p class="stars">★★★★★ Real Google reviews, right on the page</p>
+            </div>
+          </div>
+        </div>
+        <ul class="issues" id="issues" aria-label="What changed"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="fixes">
+    <div class="wrap">
+      <div class="problems-head">
+        <p class="eyebrow">What we fix</p>
+        <h2>Most local sites lose calls in one of three ways.</h2>
+        <p class="lede">We looked at dozens of Edwardsville and Glen Carbon businesses. Great reviews, busy crews, and websites that get in the way. These are the three patterns we see most.</p>
+      </div>
+      <div class="problems">
+        <article class="problem">
+          <span class="sym">NO WEBSITE</span>
+          <h3>People can't find you unless they already know you.</h3>
+          <p>Word of mouth built your business. But when a new customer searches "plumber near me," the shops with a website show up first, and you don't.</p>
+          <p class="fix">A simple, fast site with your services, photos, hours, and a call button, built to show up in local searches.</p>
+        </article>
+        <article class="problem">
+          <span class="sym">FACEBOOK ONLY</span>
+          <h3>You're renting space on someone else's platform.</h3>
+          <p>Facebook reach keeps shrinking, and plenty of people won't log in just to see your prices or hours. A booking app alone doesn't tell your story either.</p>
+          <p class="fix">A site you own that works with your Facebook page and booking app, so customers land somewhere that's yours.</p>
+        </article>
+        <article class="problem">
+          <span class="sym">⚠ NOT SECURE · ©2019</span>
+          <h3>Your site is there, but it's costing you trust.</h3>
+          <p>A "Not secure" warning, a phone number you can't tap, broken links, or a footer that says 2019. Customers notice, and they call the next company.</p>
+          <p class="fix">Modernize or rebuild: secure, mobile-friendly, working forms, and every listing pointing to the right number.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="checkup" id="checkup">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Free 5-point check</p>
+        <h2>Pull up your website on your phone right now.</h2>
+        <p class="lede" style="margin-top:1rem">Tick each one your site passes. It takes about two minutes, and it's the same check we run on every free review.</p>
+        <div class="score" aria-live="polite">
+          <div class="score-num" id="score-num">0<span>/5</span></div>
+          <p class="score-msg" id="score-msg"><b>Start ticking.</b> Your score shows up here.</p>
+          <a class="btn btn-primary" href="#contact">Get my free review</a>
+        </div>
+      </div>
+      <ul class="checks">
+        <li class="check"><label for="c1"><input type="checkbox" id="c1"><span><strong>There's a padlock in the address bar</strong><small>No "Not secure" warning next to your web address.</small></span></label></li>
+        <li class="check"><label for="c2"><input type="checkbox" id="c2"><span><strong>It's easy to read on a phone</strong><small>No pinching and zooming. Text and buttons fit the screen.</small></span></label></li>
+        <li class="check"><label for="c3"><input type="checkbox" id="c3"><span><strong>Tapping your phone number calls you</strong><small>And it dials the right number. Test it.</small></span></label></li>
+        <li class="check"><label for="c4"><input type="checkbox" id="c4"><span><strong>Google shows your town and trade</strong><small>Search "[your trade] Edwardsville IL." Your site's title should say both.</small></span></label></li>
+        <li class="check"><label for="c5"><input type="checkbox" id="c5"><span><strong>It looks like someone's home</strong><small>Current year in the footer, no placeholder images, no dead links.</small></span></label></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <p class="eyebrow">Pricing</p>
+      <h2 style="margin-top:.75rem">Flat prices. You own everything.</h2>
+      <p class="lede" style="margin-top:1rem">Your domain, your content, your site. No long contracts and no surprise invoices. Every quote is in writing before work starts.</p>
+      <p class="group-label">Build or fix · one-time</p>
+      <div class="pricing-grid">
+        <article class="plan">
+          <h3>Site Fix-It</h3>
+          <p class="price">$199<small> starting</small></p>
+          <p class="for">Your site is mostly fine but something's broken.</p>
+          <ul><li>Security certificate (padlock)</li><li>Click-to-call and wrong-number fixes</li><li>Broken links, forms, and old pages</li><li>Google title and listing cleanup</li></ul>
+        </article>
+        <article class="plan">
+          <h3>Starter Site</h3>
+          <p class="price">$950<small> one time</small></p>
+          <p class="for">No website yet, or Facebook only.</p>
+          <ul><li>One scrolling page, phone-first</li><li>Services, photos, hours, map</li><li>Tap-to-call and contact form</li><li>Google Business Profile setup</li></ul>
+        </article>
+        <article class="plan feature">
+          <span class="badge">Most popular</span>
+          <h3>Business Site</h3>
+          <p class="price">$2,800<small> one time</small></p>
+          <p class="for">Contractors and shops that want leads from search.</p>
+          <ul><li>Up to 6 pages, one per service</li><li>Quote or booking form</li><li>Town pages for your service area</li><li>Reviews and before/after gallery</li><li>Built to accessibility standards (WCAG 2.1 AA)</li><li>Local SEO setup</li></ul>
+        </article>
+      </div>
+      <p class="group-label">Keep it working · monthly, no contract</p>
+      <div class="pricing-grid monthly">
+        <article class="plan">
+          <h3>Care Plan</h3>
+          <p class="price">$89<small> / month</small></p>
+          <p class="for">Keep it running and current without thinking about it.</p>
+          <ul><li>Hosting included</li><li>Security certificate, updates, and daily backups</li><li>Up to 1 hour of edits a month</li><li>Hours, prices, and photo changes by text</li></ul>
+        </article>
+        <article class="plan feature">
+          <span class="badge">More calls</span>
+          <h3>Local Search</h3>
+          <p class="price">$399<small> / month</small></p>
+          <p class="for">Show up higher when people nearby search for what you do.</p>
+          <ul><li>Everything in the Care Plan</li><li>Google Business Profile posts and photos</li><li>Review requests sent to your customers</li><li>Directory listings fixed to match</li><li>A one-page report each month: calls, clicks, rankings</li></ul>
+        </article>
+      </div>
+      <p class="price-note">Monthly plans are month to month; cancel any time and keep your site. Domain registration is billed at cost. Larger projects get a written quote after the free review.</p>
+    </div>
+  </section>
+
+  <section class="process">
+    <div class="wrap">
+      <p class="eyebrow">How it works</p>
+      <h2 style="margin-top:.75rem">From first call to live site in about two weeks.</h2>
+      <div class="steps">
+        <div class="step"><h3>Free review</h3><p>We look at how you show up on Google and on a phone, and walk you through what's working and what isn't.</p><span class="when">10 minutes</span></div>
+        <div class="step"><h3>Written quote</h3><p>A flat price and a plain list of what you get. Nothing starts until you say yes.</p><span class="when">Within 2 days</span></div>
+        <div class="step"><h3>Build</h3><p>You send photos and a few details. We write the copy, build the site, and send you a preview to approve.</p><span class="when">About 2 weeks</span></div>
+        <div class="step"><h3>Launch</h3><p>We connect your domain, set up Google, test every button on real phones, and show you how to make small changes.</p><span class="when">Same week</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap two">
+      <div class="local">
+        <p class="eyebrow">Local</p>
+        <h2 style="margin-top:.75rem">Right here in the 618.</h2>
+        <p style="margin-top:1.25rem">We're not an out-of-state agency with a call center. We work with businesses on Main Street, along Route 157, and out on the county roads. We'll meet you at your shop, your job site, or over coffee.</p>
+        <p>Some of the best businesses around here have the worst websites, because they've been too busy doing good work to deal with it. That's the gap we fill.</p>
+        <div class="area"><span class="home">Edwardsville</span><span class="home">Glen Carbon</span><span>Maryville</span><span>Collinsville</span><span>Troy</span><span>Granite City</span><span>Alton</span><span>Highland</span></div>
+      </div>
+      <div>
+        <p class="eyebrow">Questions</p>
+        <h2 style="margin-top:.75rem;margin-bottom:1.5rem">Straight answers.</h2>
+        <details><summary>Who owns the website?</summary><p>You do. The domain is registered in your name, and you get every login. If you ever leave, the site goes with you.</p></details>
+        <details><summary>I don't have good photos. Is that a problem?</summary><p>No. Phone photos of real jobs work better than stock pictures. We'll tell you exactly what to shoot, and we can come take them.</p></details>
+        <details><summary>Do I have to give up my Facebook page?</summary><p>Keep it. Your site links to it and pulls in your reviews. Facebook is good for regulars; your site is how new customers find you.</p></details>
+        <details><summary>What if I already have a website?</summary><p>Often it just needs fixing, not replacing. The free review tells you which, and the Fix-It plan covers most small problems.</p></details>
+        <details><summary>Couldn't I just build one on Wix or with AI?</summary><p>You could, and some owners do. Most of the people we work with would rather spend that weekend on a job site. We handle everything from photos to Google setup, test it on real phones, and keep it working after launch.</p></details>
+        <details><summary>Am I locked into a contract?</summary><p>No. Builds are a flat price, and monthly plans are month to month. Cancel any time and the site, domain, and content stay yours.</p></details>
+        <details><summary>Do I need a monthly plan?</summary><p>No. It's optional. Without one, we hand you the keys and show you how to make small changes yourself. The Care Plan covers hosting and edits; Local Search is for owners who want more calls from Google.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Free review</p>
+        <h2 style="margin-top:.75rem">Let's see how you show up.</h2>
+        <p class="lede" style="margin-top:1rem">Tell us about your business. We'll look at your site and Google listing and get back to you within one business day with what we found. No pressure, no obligation.</p>
+        <div class="direct">
+          <div class="direct-row" id="phone-row" hidden><span class="lbl">Call or text</span><span class="val" data-bind="phone">(618) XXX-XXXX</span><button class="copy" type="button" data-copy="phone">Copy</button></div>
+          <div class="direct-row"><span class="lbl">Email</span><a class="val" href="mailto:six18web@gmail.com" data-bind="email" style="text-decoration:none">six18web@gmail.com</a><button class="copy" type="button" data-copy="email">Copy</button></div>
+          <div class="direct-row"><span class="lbl">Follow or message us</span><div class="direct-socials"><a href="https://www.facebook.com/six18web" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/six18web" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@six18.web" target="_blank" rel="noopener">TikTok</a><a href="https://x.com/six18web" target="_blank" rel="noopener">X</a></div></div>
+        </div>
+      </div>
+      <form id="lead" novalidate>
+        <div class="field"><label for="f-name">Your name</label><input type="text" id="f-name" autocomplete="name" required></div>
+        <div class="field"><label for="f-biz">Business name</label><input type="text" id="f-biz" autocomplete="organization" required></div>
+        <div class="field"><label for="f-phone">Phone</label><input type="tel" id="f-phone" autocomplete="tel"></div>
+        <div class="field"><label for="f-email">Email</label><input type="email" id="f-email" autocomplete="email"></div>
+        <div class="field"><label for="f-site">Current website or Facebook <span>(if any)</span></label><input type="text" id="f-site" placeholder="yourbusiness.com"></div>
+        <div class="field"><label for="f-need">What do you need?</label>
+          <select id="f-need"><option>Not sure yet, review my site</option><option>A new website</option><option>Fix my current website</option><option>Show up better on Google</option><option>Monthly updates</option></select></div>
+        <div class="field full"><label for="f-msg">Anything else? <span>(optional)</span></label><textarea id="f-msg" placeholder="What you do, where you work, what's frustrating you about your site."></textarea></div>
+        <p class="err full" id="f-err" hidden>Add your name, your business name, and a phone or email so we can reach you.</p>
+        <div class="field full"><button class="btn btn-primary" type="submit" style="justify-self:start">Request my free review</button></div>
+        <div class="sent" id="sent" hidden>
+          <strong>Almost done: send your note.</strong>
+          <p>Your email app should open with your note ready to send. If it didn't, copy the note and email it to six18web@gmail.com. We reply within one business day.</p>
+          <textarea id="sent-text" readonly aria-label="Your message"></textarea>
+          <div class="row"><button class="btn btn-primary" type="button" id="copy-msg">Copy message</button><a class="btn btn-ghost" id="mail-msg" href="#">Open in email</a></div>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr">2026</span> <span data-bind="name">Six18 Web</span> · Built in the 618, for shops everywhere</span>
+    <nav class="socials" aria-label="Social media"><a href="https://www.facebook.com/six18web" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/six18web" target="_blank" rel="noopener">Instagram</a><a href="https://www.tiktok.com/@six18.web" target="_blank" rel="noopener">TikTok</a><a href="https://x.com/six18web" target="_blank" rel="noopener">X</a></nav>
+  </div>
+</footer>
+
+<script>
+/* Edit these to update the whole page */
+const SITE = {
+  name: "Six18 Web",
+  phone: "",   /* add the business number here, e.g. "(618) 555-0123" */
+  email: "six18web@gmail.com"
+};
+document.querySelectorAll('[data-bind]').forEach(el => { const k = el.dataset.bind; if (SITE[k]) el.textContent = SITE[k]; });
+if (SITE.phone) document.getElementById('phone-row').hidden = false;
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* Before / after phone */
+const issues = {
+  before: [["x","“Not secure” warning in the address bar"],["x","Phone number can’t be tapped"],["x","Placeholder image, ©2019 footer"]],
+  after: [["ok","Padlock: secure connection"],["ok","Tap-to-call and quote button up top"],["ok","Town + services Google can read"]]
+};
+const ul = document.getElementById('issues');
+function show(state){
+  document.getElementById('screen-before').hidden = state !== 'before';
+  document.getElementById('screen-after').hidden = state !== 'after';
+  document.getElementById('btn-before').setAttribute('aria-pressed', state === 'before');
+  document.getElementById('btn-after').setAttribute('aria-pressed', state === 'after');
+  ul.innerHTML = '';
+  issues[state].forEach(([k, t]) => { const li = document.createElement('li'); const s = document.createElement('span'); s.className = k; s.textContent = k === 'x' ? '✕' : '✓'; li.append(s, document.createTextNode(t)); ul.append(li); });
+}
+document.getElementById('btn-before').addEventListener('click', () => show('before'));
+document.getElementById('btn-after').addEventListener('click', () => show('after'));
+show('before');
+
+/* Checkup score */
+const msgs = [
+  "<b>Your site is likely costing you calls every week.</b> Let's fix the basics.",
+  "<b>Your site is likely costing you calls every week.</b> Let's fix the basics.",
+  "<b>A few things are getting in the way.</b> Most are quick fixes.",
+  "<b>Close.</b> A couple of fixes and you're in good shape.",
+  "<b>Nearly there.</b> One fix and you're set.",
+  "<b>Nice work.</b> Want help showing up higher on Google?"
+];
+const boxes = [...document.querySelectorAll('.checks input')];
+function score(){
+  const n = boxes.filter(b => b.checked).length;
+  document.getElementById('score-num').innerHTML = n + '<span>/5</span>';
+  document.getElementById('score-msg').innerHTML = boxes.some(b => b.checked) ? msgs[n] : "<b>Start ticking.</b> Your score shows up here.";
+}
+boxes.forEach(b => b.addEventListener('change', score));
+
+/* Copy helpers */
+async function copyText(text, btn, fallbackEl){
+  try { await navigator.clipboard.writeText(text); const o = btn.textContent; btn.textContent = 'Copied'; setTimeout(() => btn.textContent = o, 1600); }
+  catch(e){ if (fallbackEl){ fallbackEl.focus(); fallbackEl.select && fallbackEl.select(); } btn.textContent = 'Select and copy'; }
+}
+document.querySelectorAll('[data-copy]').forEach(btn => btn.addEventListener('click', () => {
+  const val = SITE[btn.dataset.copy];
+  copyText(val, btn, btn.previousElementSibling);
+}));
+
+/* Lead form: builds a message the visitor sends by text or email */
+const form = document.getElementById('lead');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const v = id => document.getElementById(id).value.trim();
+  const ok = v('f-name') && v('f-biz') && (v('f-phone') || v('f-email'));
+  document.getElementById('f-err').hidden = !!ok;
+  if (!ok) return;
+  const text = [
+    `Free review request for ${SITE.name}`,
+    `Name: ${v('f-name')}`,
+    `Business: ${v('f-biz')}`,
+    v('f-phone') && `Phone: ${v('f-phone')}`,
+    v('f-email') && `Email: ${v('f-email')}`,
+    v('f-site') && `Current site: ${v('f-site')}`,
+    `Looking for: ${v('f-need')}`,
+    v('f-msg') && `Notes: ${v('f-msg')}`
+  ].filter(Boolean).join('\n');
+  const box = document.getElementById('sent-text');
+  box.value = text;
+  document.getElementById('mail-msg').href = 'mailto:' + encodeURIComponent(SITE.email) + '?subject=' + encodeURIComponent('Free website review: ' + v('f-biz')) + '&body=' + encodeURIComponent(text);
+  document.getElementById('sent').hidden = false;
+  window.location.href = document.getElementById('mail-msg').href;
+  document.getElementById('sent').scrollIntoView({behavior:'smooth', block:'nearest'});
+});
+document.getElementById('copy-msg').addEventListener('click', e => copyText(document.getElementById('sent-text').value, e.currentTarget, document.getElementById('sent-text')));
+</script>
+</body>
+</html>
