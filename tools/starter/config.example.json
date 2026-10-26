@@ -1,0 +1,90 @@
+{
+  "_note": "Sample data for a made-up business. Copy this file to clients/<slug>.json and replace every value.",
+  "business": "Sample Roofing & Exteriors",
+  "short_name": "Sample Roofing",
+  "trade": "Roofing contractor",
+  "schema_type": "RoofingContractor",
+  "town": "Edwardsville",
+  "state": "IL",
+  "zip": "62025",
+  "street": "",
+  "show_address": false,
+  "service_area": [
+    "Edwardsville",
+    "Glen Carbon",
+    "Maryville",
+    "Collinsville",
+    "Troy"
+  ],
+  "phone": "(618) 555-0100",
+  "email": "office@example.com",
+  "domain": "example.com",
+  "tagline": "Roof repair and replacement in Edwardsville and Glen Carbon.",
+  "headline": "Roofs done right, <em>the first time.</em>",
+  "intro": "Family-owned and local since 2009. Free inspections, honest quotes, and crews who clean up before they leave.",
+  "primary_cta": "Get a free inspection",
+  "bar_cta": "Get a quote",
+  "badges": [
+    "Licensed & insured",
+    "Free estimates",
+    "Family owned"
+  ],
+  "services_title": "Roofing services in Edwardsville",
+  "colors": {
+    "brand": "#1F3A5F",
+    "accent": "#E4572E"
+  },
+  "logo": "",
+  "hero_photo": "",
+  "services": [
+    {
+      "name": "Roof replacement",
+      "text": "Full tear-off and replacement with architectural shingles and a written warranty."
+    },
+    {
+      "name": "Roof repair",
+      "text": "Leaks, missing shingles, flashing, and storm damage, fixed fast."
+    },
+    {
+      "name": "Storm damage & insurance",
+      "text": "Free inspection after hail or wind, and help working with your insurance company."
+    },
+    {
+      "name": "Gutters",
+      "text": "Seamless gutters, guards, and downspouts that keep water away from your foundation."
+    }
+  ],
+  "about": "We're a small, local crew that answers the phone and shows up when we say we will. Most of our work comes from neighbors who've seen what we do.",
+  "photos": [],
+  "reviews": [
+    {
+      "quote": "Sample review text goes here. Use real reviews only, with the customer's permission.",
+      "name": "Customer first name",
+      "source": "Google"
+    }
+  ],
+  "hours": [
+    [
+      "Mon to Fri",
+      "7:00 AM to 5:00 PM"
+    ],
+    [
+      "Saturday",
+      "By appointment"
+    ],
+    [
+      "Sunday",
+      "Closed"
+    ]
+  ],
+  "facebook": "",
+  "instagram": "",
+  "google_reviews_url": "",
+  "form": {
+    "kind": "mailto",
+    "google_form_action": "",
+    "fields": {}
+  },
+  "year_founded": "2009",
+  "photos_help": "List photos as {\"src\": \"photos/job1.jpg\", \"alt\": \"New roof on a brick ranch home in Glen Carbon\"}"
+}
