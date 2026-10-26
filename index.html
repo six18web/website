@@ -135,7 +135,7 @@
         <div class="score" aria-live="polite">
           <div class="score-num" id="score-num">0<span>/5</span></div>
           <p class="score-msg" id="score-msg"><b>Start ticking.</b> Your score shows up here.</p>
-          <a class="btn btn-primary" href="#contact">Get my free review</a>
+          <a class="btn btn-primary" href="#contact" id="check-to-form">Get my free review</a>
         </div>
       </div>
       <ul class="checks">
@@ -252,6 +252,8 @@
         <div class="field"><label for="f-need">What do you need?</label>
           <select id="f-need"><option>Not sure yet, review my site</option><option>A new website</option><option>Fix my current website</option><option>Show up better on Google</option><option>Monthly updates</option></select></div>
         <div class="field full"><label for="f-msg">Anything else? <span>(optional)</span></label><textarea id="f-msg" placeholder="What you do, where you work, what's frustrating you about your site."></textarea></div>
+        <input type="hidden" id="f-check" value="">
+        <p class="check-note full" id="f-check-note" hidden></p>
         <input type="text" id="f-hp" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <p class="err full" id="f-err" hidden>Add your name, your business name, and a phone or email so we can reach you.</p>
         <div class="field full"><button class="btn btn-primary" type="submit" id="f-submit" style="justify-self:start">Request my free review</button><p class="form-note">We only use this to reply to you. We never sell your information. <a href="/privacy/">Privacy notice</a></p></div>
@@ -334,6 +336,31 @@ function score(){
 }
 boxes.forEach(b => b.addEventListener('change', score));
 
+/* Carry the self-check into the review form, so the request arrives with the visitor's results */
+const CHECK_LABELS = {c1:'Padlock / secure', c2:'Easy to read on a phone', c3:'Tap-to-call works', c4:'Google shows town and trade', c5:'Looks current, no dead links'};
+function selfCheck(){
+  if (!boxes.some(b => b.checked)) return '';
+  const pass = boxes.filter(b => b.checked).map(b => CHECK_LABELS[b.id]);
+  const miss = boxes.filter(b => !b.checked).map(b => CHECK_LABELS[b.id]);
+  return `${pass.length}/5` + (miss.length ? `. Missing: ${miss.join(', ')}` : '. Passed all five') + (pass.length && miss.length ? `. Passed: ${pass.join(', ')}` : '') + '.';
+}
+function syncCheck(){
+  const s = selfCheck(), note = document.getElementById('f-check-note');
+  document.getElementById('f-check').value = s;
+  note.hidden = !s;
+  if (s) note.innerHTML = '<b>Your self-check is included:</b> ' + s.replace(/[<>&]/g, '');
+}
+boxes.forEach(b => b.addEventListener('change', syncCheck));
+document.getElementById('check-to-form').addEventListener('click', () => {
+  syncCheck();
+  const need = document.getElementById('f-need');
+  if (need.selectedIndex === 0 && boxes.some(b => b.checked)) {
+    const missing = boxes.filter(b => !b.checked).map(b => b.id);
+    if (missing.length === 1 && missing[0] === 'c4') need.value = 'Show up better on Google';
+    else if (missing.length) need.value = 'Fix my current website';
+  }
+});
+
 /* Copy helpers */
 async function copyText(text, btn, fallbackEl){
   try { await navigator.clipboard.writeText(text); const o = btn.textContent; btn.textContent = 'Copied'; setTimeout(() => btn.textContent = o, 1600); }
@@ -354,7 +381,8 @@ const FORM_FIELDS = {
   'f-email': 'entry.570045242',   /* Email */
   'f-site':  'entry.539808713',   /* Current website or Facebook */
   'f-need':  'entry.1875138850',  /* Looking for */
-  'f-msg':   'entry.499495201'    /* Notes */
+  'f-msg':   'entry.499495201',   /* Notes */
+  'f-check': 'entry.1081789492'   /* Self-check results */
 };
 const form = document.getElementById('lead');
 form.addEventListener('submit', async e => {
@@ -373,6 +401,7 @@ form.addEventListener('submit', async e => {
        so a network error is the only failure we can detect. */
     await fetch(FORM_ENDPOINT, { method: 'POST', mode: 'no-cors', body });
     form.querySelectorAll('.field').forEach(f => f.hidden = true);
+    document.getElementById('f-check-note').hidden = true;
     document.getElementById('sent').hidden = false;
     document.getElementById('sent').scrollIntoView({behavior:'smooth', block:'nearest'});
     return;
@@ -387,7 +416,8 @@ form.addEventListener('submit', async e => {
     v('f-email') && `Email: ${v('f-email')}`,
     v('f-site') && `Current site: ${v('f-site')}`,
     `Looking for: ${v('f-need')}`,
-    v('f-msg') && `Notes: ${v('f-msg')}`
+    v('f-msg') && `Notes: ${v('f-msg')}`,
+    v('f-check') && `Self-check: ${v('f-check')}`
   ].filter(Boolean).join('\n');
   const box = document.getElementById('sent-text');
   box.value = text;
