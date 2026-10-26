@@ -177,7 +177,7 @@ def footer():
       <p>Web design, website fixes, and local SEO for small businesses. Based in Edwardsville &amp; Glen Carbon, Illinois. Working with shops nationwide.</p>
       <p><a href="mailto:{EMAIL}">{EMAIL}</a></p>
     </div>
-    <nav aria-label="Services"><p class="foot-h">Services</p><ul>{svc}<li><a href="/#pricing">Pricing</a></li></ul></nav>
+    <nav aria-label="Services"><p class="foot-h">Services</p><ul>{svc}<li><a href="/#pricing">Pricing</a></li><li><a href="/privacy/">Privacy</a></li></ul></nav>
     <div><p class="foot-h">Service area</p><p class="foot-towns">{" · ".join(town_link(t) for t in TOWNS)}, and anywhere in the U.S. by video call.</p></div>
   </div>
   <div class="wrap foot-bottom">
@@ -383,8 +383,59 @@ def build_404():
     (ROOT / "404.html").write_text(h + "\n" + body, encoding="utf-8")
 
 
+PRIVACY_UPDATED = "October 25, 2026"
+PRIVACY = [
+    ("What we collect", """<p>When you use the free review form on this site, we collect what you type into it: your name, business name, phone number, email address, current website or Facebook page, what you need help with, and any notes. If you email us directly, we receive your email address and whatever you include in the message.</p>
+<p>We don't use advertising trackers, analytics cookies, or tracking pixels on this site, and we don't ask you to create an account.</p>"""),
+    ("How we use it", """<p>We use your information to reply to your request, review your website and Google listing as you asked, send you a quote, and keep a record of our conversation. If you become a client, we use it to do the work and send invoices.</p>
+<p>We don't sell your information, rent it, or share it with anyone for their own marketing.</p>"""),
+    ("Services that handle your information", """<p>We use a few outside services to run this site and our business:</p>
+<ul class="plain-list">
+<li><b>Google Forms and Google Sheets</b> receive and store form submissions in our Google account.</li>
+<li><b>Gmail</b> handles our email.</li>
+<li><b>GitHub Pages</b> hosts this website and may keep standard server logs, such as IP addresses, for security.</li>
+<li><b>Google Fonts</b> provides the fonts on this site, so your browser connects to Google's servers to load them.</li>
+</ul>
+<p>Each of these services handles data under its own privacy policy.</p>"""),
+    ("How long we keep it", """<p>We keep review requests and client records as long as we need them to work with you and to keep accurate business and tax records. If you never become a client, you can ask us to delete your request at any time.</p>"""),
+    ("Your choices", """<p>Email <a href="mailto:six18web@gmail.com">six18web@gmail.com</a> to see the information we have about you, correct it, or ask us to delete it. We'll respond within a reasonable time, usually a few business days. If you'd rather not hear from us, just tell us and we'll stop.</p>"""),
+    ("Children", """<p>This site is meant for business owners and isn't directed at children under 13. We don't knowingly collect information from them.</p>"""),
+    ("Changes", """<p>If we change this notice, we'll update the date at the top of this page.</p>"""),
+]
+
+
+def build_privacy():
+    path = "/privacy/"
+    url = SITE + path
+    sections = "".join(f"<h2>{h}</h2>{b}" for h, b in PRIVACY)
+    graph = [BUSINESS, WEBSITE,
+             {"@type": "WebPage", "@id": url, "url": url, "name": "Privacy notice | Six18 Web",
+              "isPartOf": {"@id": f"{SITE}/#website"}, "breadcrumb": {"@id": f"{url}#breadcrumb"}},
+             breadcrumb(path, "Privacy")]
+    body = f"""{header()}
+<main id="top">
+  <section class="hero sub-hero">
+    <div class="wrap sub-hero-wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Privacy</span></nav>
+      <p class="eyebrow">Last updated {PRIVACY_UPDATED}</p>
+      <h1>Privacy notice</h1>
+      <p class="lede">Short version: we only collect what you send us, we use it to help you, and we never sell it.</p>
+    </div>
+  </section>
+  <section>
+    <div class="wrap"><div class="legal">{sections}
+      <h2>Contact</h2><p>Six18 Web · Edwardsville, Illinois · <a href="mailto:{EMAIL}">{EMAIL}</a></p>
+    </div></div>
+  </section>
+</main>
+{footer()}{SUB_SCRIPT}"""
+    out = ROOT / "privacy" / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(head("Privacy Notice | Six18 Web", "How Six18 Web collects, uses, and protects the information you send through our website and email. We never sell your information.", path, graph) + "\n" + body, encoding="utf-8")
+
+
 def build_seo_files():
-    urls = ["/"] + [p["path"] for p in PAGES] + [f"/{t['slug']}/" for t in TOWN_PAGES]
+    urls = ["/"] + [p["path"] for p in PAGES] + [f"/{t['slug']}/" for t in TOWN_PAGES] + ["/privacy/"]
     items = "".join(f"  <url><loc>{SITE}{u}</loc><lastmod>{TODAY}</lastmod></url>\n" for u in urls)
     (ROOT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -404,6 +455,7 @@ if __name__ == "__main__":
         build_service(p)
     for t in TOWN_PAGES:
         build_town(t)
+    build_privacy()
     build_404()
     build_seo_files()
     print("built:", ["/"] + [p["path"] for p in PAGES] + [t["slug"] for t in TOWN_PAGES] + ["/404.html", "sitemap.xml", "robots.txt"])

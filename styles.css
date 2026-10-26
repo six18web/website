@@ -271,3 +271,12 @@ footer ul a:hover{color:var(--accent)}
 .area a:hover{border-color:var(--accent)}
 .foot-towns a{color:var(--band-muted);text-decoration:underline;text-decoration-color:rgba(255,255,255,.25);text-underline-offset:3px}
 .foot-towns a:hover{color:var(--accent)}
+.legal{max-width:720px}
+.legal h2{font-size:1.5rem;margin:2.25rem 0 .75rem}
+.legal h2:first-child{margin-top:0}
+.legal p,.legal li{color:var(--muted)}
+.legal p + p{margin-top:.8rem}
+.legal a{color:var(--accent);font-weight:600}
+.plain-list{margin:.75rem 0;padding-left:1.2rem;display:flex;flex-direction:column;gap:.4rem}
+.form-note{margin-top:.75rem;font-size:.85rem;color:var(--muted)}
+.form-note a{color:var(--muted)}
