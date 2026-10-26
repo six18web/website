@@ -263,3 +263,11 @@ footer ul a:hover{color:var(--accent)}
 .cta-band .wrap{display:flex;flex-direction:column;align-items:center;gap:1.25rem}
 .cta-band .lede{color:var(--band-muted);margin:0 auto}
 @media (min-width:561px){.feature-grid:has(> li:nth-child(4):last-child){grid-template-columns:repeat(2,minmax(0,1fr))}}
+.feature-grid.one-col{grid-template-columns:1fr!important;margin-top:1.25rem;gap:.9rem}
+.feature-grid h3 a{text-decoration:none}
+.feature-grid h3 a:hover{color:var(--accent)}
+.area a{font:500 .82rem/1 var(--mono);border:1px solid var(--line);background:var(--surface);padding:.5rem .7rem;border-radius:6px;text-decoration:none}
+.area a.home{border-color:var(--accent);color:var(--accent)}
+.area a:hover{border-color:var(--accent)}
+.foot-towns a{color:var(--band-muted);text-decoration:underline;text-decoration-color:rgba(255,255,255,.25);text-underline-offset:3px}
+.foot-towns a:hover{color:var(--accent)}

@@ -1,0 +1,106 @@
+"""Content for the town pages. Edit text here, then run: python3 tools/build.py
+Keep every page genuinely about its town; don't copy paragraphs between towns,
+and don't claim clients or results we don't have."""
+
+TOWNS = [
+    dict(
+        slug="edwardsville-il", name="Edwardsville", zip="62025",
+        title="Edwardsville, IL Web Design & Local SEO | Six18 Web",
+        desc="Websites, website fixes, and local SEO for Edwardsville, IL businesses. Based in Edwardsville & Glen Carbon. Flat prices and a free 10-minute site review.",
+        h1="Web design for <em>Edwardsville</em> businesses.",
+        lede="Six18 Web is based right here in Edwardsville and Glen Carbon. We build and fix websites for the shops, contractors, salons, and restaurants that keep this town running, and help them show up when someone nearby searches.",
+        local_h2="Built for how Edwardsville searches.",
+        local=[
+            "Edwardsville is the Madison County seat, a college town, and a busy place for small business, from Main Street storefronts to the contractors who work out of a truck. That mix means your customers are students and SIUE families, longtime residents, and people new to town who've never heard of you.",
+            "People new to town don't ask a neighbor first. They search on their phone, and they call whoever shows up with a clear site, a tap-to-call button, and good reviews. That's the spot we help you earn.",
+            "Before we launched, we audited dozens of Edwardsville and Glen Carbon business websites. The same problems kept showing up: no website at all, a Facebook page doing a website's job, and older sites with \"Not secure\" warnings and phone numbers you can't tap.",
+        ],
+        meet="We're happy to meet at your shop, your job site, or over coffee downtown.",
+        nearby=["glen-carbon-il", "maryville-il", "collinsville-il", "troy-il"],
+        faqs=[
+            ("Are you actually local to Edwardsville?", "Yes. Six18 Web is based in Edwardsville and Glen Carbon. We can meet in person anywhere in town, and everything also works over the phone or a short video call."),
+            ("Do you help businesses near SIUE?", "Yes. If you serve students, staff, or visiting families, we'll make sure your site and Google listing make it easy for people who are new to the area to find you, see your hours, and call."),
+            ("How do I show up for \"near me\" searches in Edwardsville?", "Start with a complete Google Business Profile, a website that names your services and Edwardsville clearly, and steady Google reviews. Our <a href=\"/local-seo/\">Local SEO</a> page explains how it works."),
+        ],
+    ),
+    dict(
+        slug="glen-carbon-il", name="Glen Carbon", zip="62034",
+        title="Glen Carbon, IL Web Design & Local SEO | Six18 Web",
+        desc="Glen Carbon, IL web design, website fixes, and local SEO from a team based right here. Phone-first sites, flat prices, and a free 10-minute site review.",
+        h1="Glen Carbon web design, <em>from Glen Carbon.</em>",
+        lede="We're based in Glen Carbon and Edwardsville. We build fast, phone-first websites for Glen Carbon businesses and set them up so neighbors find you before they find a chain.",
+        local_h2="Glen Carbon customers search close to home.",
+        local=[
+            "Glen Carbon sits between Edwardsville and Maryville, and a lot of local businesses here serve customers on both sides of that line. If your website and Google listing only mention one town, you're invisible to people searching from the other.",
+            "We set up your site and Google Business Profile to name the towns you actually serve, so a search from Glen Carbon, Edwardsville, or Maryville can all land on you.",
+            "Many Glen Carbon businesses run on word of mouth and a Facebook page. That works for regulars. A real website is how new neighbors who just moved in find you.",
+        ],
+        meet="We can meet at your business or anywhere around Glen Carbon.",
+        nearby=["edwardsville-il", "maryville-il", "collinsville-il", "troy-il"],
+        faqs=[
+            ("Do you work with home-based businesses in Glen Carbon?", "Yes. Google lets service businesses hide their home address and show a service area instead. We'll set that up so you get found without listing your house."),
+            ("My business serves Glen Carbon and Edwardsville. Can one site cover both?", "Yes. We name every town you serve on your site and Google listing, and the Business Site package includes separate town pages for your service area."),
+            ("How fast can a Glen Carbon business get a website?", "About two weeks from the day we get your photos and details. See <a href=\"/web-design/\">web design</a> for what's included."),
+        ],
+    ),
+    dict(
+        slug="collinsville-il", name="Collinsville", zip="62234",
+        title="Collinsville, IL Web Design & Local SEO | Six18 Web",
+        desc="Web design, website fixes, and local SEO for Collinsville, IL businesses, from Uptown to the I-55/70 corridor. Flat prices and a free site review.",
+        h1="Websites for <em>Collinsville</em> businesses.",
+        lede="From Uptown Collinsville shops to contractors working the whole Metro East, we build and fix websites that are easy to use on a phone and set up to show up in local search.",
+        local_h2="Collinsville competes with the whole metro.",
+        local=[
+            "Collinsville sits right on the I-55/70 corridor, minutes from St. Louis. That's great for traffic and tough for search: when someone in Collinsville searches for a plumber or a salon, they see businesses from across the metro too.",
+            "Winning that search comes down to basics done well: a site that clearly says you're in Collinsville, a complete Google Business Profile, matching listings everywhere, and a steady stream of reviews.",
+            "Collinsville spans both Madison and St. Clair counties, so we make sure your service area and listings reflect where your customers actually are.",
+        ],
+        meet="We're about 15 minutes away and glad to meet you in Collinsville.",
+        nearby=["maryville-il", "edwardsville-il", "glen-carbon-il", "troy-il"],
+        faqs=[
+            ("Can a small Collinsville business really compete with St. Louis companies on Google?", "Often, yes. Google weighs how close a business is to the person searching. A complete Google profile, clear local pages, and real reviews give a nearby business a real advantage. See <a href=\"/local-seo/\">Local SEO</a>."),
+            ("Do you work with restaurants and shops in Uptown?", "Yes. Hours, menus, photos, and a tap-to-call or order button matter most for walk-in businesses, and they're all built in."),
+            ("What if I already have a website?", "It may only need fixing. Our <a href=\"/website-repair/\">website fixes</a> start at $199, and the free review tells you whether to fix or rebuild."),
+        ],
+    ),
+    dict(
+        slug="maryville-il", name="Maryville", zip="62062",
+        title="Maryville, IL Web Design & Local SEO | Six18 Web",
+        desc="Websites and local SEO for Maryville, IL businesses along Route 159. Phone-first sites, fixes from $199, and a free 10-minute review from a local team.",
+        h1="Maryville businesses, <em>found on Google.</em>",
+        lede="We build and fix websites for Maryville businesses, from the shops along Route 159 to the contractors who serve the whole area, and set them up so local customers can find and call you fast.",
+        local_h2="Small town, busy road.",
+        local=[
+            "Maryville is a small village with a busy Route 159 running through it, and plenty of people pass through who don't live here. They're searching on their phones, and the businesses with clear websites and complete Google listings get the call.",
+            "With Anderson Hospital in town, a lot of Maryville searches come from visitors and families who don't know the area. Clear hours, a map, and a tap-to-call button make it easy for them to choose you.",
+            "Maryville customers also overlap heavily with Glen Carbon, Collinsville, and Edwardsville. We make sure your site and listings name every town you serve.",
+        ],
+        meet="We're next door in Glen Carbon and happy to stop by.",
+        nearby=["glen-carbon-il", "collinsville-il", "edwardsville-il", "troy-il"],
+        faqs=[
+            ("Do I need a website if I already have a Google listing?", "A Google listing gets you on the map; a website gives Google (and customers) the details that win the click. The two work best together."),
+            ("Can you fix my Google listing too?", "Yes. Google Business Profile cleanup is part of our <a href=\"/website-repair/\">Site Fix-It</a> plan, and ongoing management is part of <a href=\"/local-seo/\">Local Search</a>."),
+            ("How much does a website cost?", "A Starter Site is $950 and a Business Site is $2,800, both flat prices with a written quote first."),
+        ],
+    ),
+    dict(
+        slug="troy-il", name="Troy", zip="62294",
+        title="Troy, IL Web Design & Local SEO | Six18 Web",
+        desc="Web design, website fixes, and local SEO for Troy, IL businesses near I-55/70 and Route 162. Flat prices and a free 10-minute site review.",
+        h1="Troy, IL web design that <em>gets you calls.</em>",
+        lede="Troy businesses serve locals, the growing neighborhoods around town, and a steady stream of travelers off the interstate. We build websites that work for all three, on a phone first.",
+        local_h2="Locals and travelers search differently.",
+        local=[
+            "Troy sits where I-55/70 meets Route 162, so a lot of searches here come from people passing through: a quick meal, a repair, a place to stop. They're on a phone, in a hurry, and they'll call the first business that makes it easy.",
+            "Locals search differently. They're looking for a contractor, a stylist, or a shop they'll use for years, and they read reviews and look at real photos of your work.",
+            "A good Troy website handles both: hours, directions, and a call button up top for travelers, and services, photos, and reviews for the people who live here.",
+        ],
+        meet="Troy is a short drive for us, and we're glad to meet in person.",
+        nearby=["maryville-il", "edwardsville-il", "glen-carbon-il", "collinsville-il"],
+        faqs=[
+            ("Can you help my business show up for travelers near the interstate?", "Yes. A complete Google Business Profile with accurate hours, photos, and categories matters most for those quick \"near me\" searches, and your website backs it up."),
+            ("Do you build sites for contractors in the Troy area?", "Yes. The <a href=\"/web-design/\">Business Site</a> is built for contractors: a page per service, town pages for your service area, a quote form, and a before/after gallery."),
+            ("Do I have to sign a contract?", "No. Builds are a flat price, and monthly plans are month to month."),
+        ],
+    ),
+]

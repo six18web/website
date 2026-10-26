@@ -11,6 +11,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from pages import PAGES  # noqa: E402
+from towns import TOWNS as TOWN_PAGES  # noqa: E402
+from pages import STEPS as STEPS_HTML  # noqa: E402
+TOWN_LINK = {t['name']: f"/{t['slug']}/" for t in TOWN_PAGES}
 
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://six18web.com"
@@ -147,6 +150,23 @@ def header(current=""):
 """
 
 
+def town_link(t, cls=""):
+    if t in TOWN_LINK:
+        c = f' class="{cls}"' if cls else ""
+        return f'<a href="{TOWN_LINK[t]}"{c}>{t}</a>'
+    return t
+
+
+def linkify_area(h):
+    """Turn the town chips (<span>Town</span> inside .area) into links where a town page exists."""
+    def chips(m):
+        inner = re.sub(r'<span( class="home")?>([^<]+)</span>',
+                       lambda c: f'<a href="{TOWN_LINK[c.group(2)]}"{c.group(1) or ""}>{c.group(2)}</a>'
+                       if c.group(2) in TOWN_LINK else c.group(0), m.group(2))
+        return m.group(1) + inner + "</div>"
+    return re.sub(r'(<div class="area">)(.*?)</div>', chips, h, flags=re.S)
+
+
 def footer():
     svc = "".join(f'<li><a href="{p}">{label}</a></li>' for p, label, _ in SERVICES)
     soc = "".join(f'<a href="{u}" target="_blank" rel="noopener">{n}</a>' for n, u in SOCIAL)
@@ -158,7 +178,7 @@ def footer():
       <p><a href="mailto:{EMAIL}">{EMAIL}</a></p>
     </div>
     <nav aria-label="Services"><p class="foot-h">Services</p><ul>{svc}<li><a href="/#pricing">Pricing</a></li></ul></nav>
-    <div><p class="foot-h">Service area</p><p class="foot-towns">{" · ".join(TOWNS)}, and anywhere in the U.S. by video call.</p></div>
+    <div><p class="foot-h">Service area</p><p class="foot-towns">{" · ".join(town_link(t) for t in TOWNS)}, and anywhere in the U.S. by video call.</p></div>
   </div>
   <div class="wrap foot-bottom">
     <span>© <span id="yr">2026</span> Six18 Web · Built in the 618, for shops everywhere</span>
@@ -240,7 +260,87 @@ def build_service(p):
 {footer()}{SUB_SCRIPT}"""
     out = ROOT / path.strip("/") / "index.html"
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(head(p["title"], p["desc"], path, graph) + "\n" + body, encoding="utf-8")
+    out.write_text(head(p["title"], p["desc"], path, graph) + "\n" + linkify_area(body), encoding="utf-8")
+
+
+def build_town(t):
+    path = f"/{t['slug']}/"
+    url = SITE + path
+    city = {"@type": "City", "name": f"{t['name']}, IL"}
+    graph = [
+        BUSINESS, WEBSITE,
+        {"@type": "WebPage", "@id": url, "url": url, "name": t["title"], "description": t["desc"],
+         "isPartOf": {"@id": f"{SITE}/#website"}, "breadcrumb": {"@id": f"{url}#breadcrumb"},
+         "about": {"@id": f"{url}#service"}},
+        {"@type": "Service", "@id": f"{url}#service",
+         "name": f"Web design and local SEO in {t['name']}, IL",
+         "serviceType": "Web design, website repair, and local SEO",
+         "provider": {"@id": f"{SITE}/#business"}, "areaServed": city, "description": t["desc"]},
+        breadcrumb(path, f"{t['name']}, IL"),
+        faq_schema(t["faqs"], url),
+    ]
+    by = {x["slug"]: x for x in TOWN_PAGES}
+    nearby = "".join(f'<a class="svc-link" href="/{s}/"><span>{by[s]["name"]}, IL</span><span aria-hidden="true">→</span></a>'
+                     for s in t["nearby"])
+    local = "".join(f"<p>{x}</p>" for x in t["local"])
+    body = f"""{header()}
+<main id="top">
+  <section class="hero sub-hero">
+    <div class="wrap sub-hero-wrap">
+      <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">{t["name"]}, IL</span></nav>
+      <p class="eyebrow">{t["name"]}, Illinois {t["zip"]} · Web design &amp; local SEO</p>
+      <h1>{t["h1"]}</h1>
+      <p class="lede">{t["lede"]}</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="/#contact">Get a free 10-minute review</a>
+        <a class="btn btn-ghost" href="/#pricing">See pricing</a>
+      </div>
+      <p class="towns">Fixes from <b>$199</b> · Websites from <b>$950</b> · Local SEO <b>$399/month</b></p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap two">
+      <div class="prose">
+        <p class="eyebrow">Local search in {t["name"]}</p>
+        <h2 style="margin-top:.75rem">{t["local_h2"]}</h2>
+        {local}
+      </div>
+      <div>
+        <p class="eyebrow">What we do for {t["name"]} businesses</p>
+        <ul class="feature-grid one-col">
+          <li><h3><a href="/web-design/">New websites</a></h3><p>Phone-first sites with tap-to-call, your services and photos, and page titles that name {t["name"]}. Starter Site $950, Business Site $2,800.</p></li>
+          <li><h3><a href="/website-repair/">Website fixes</a></h3><p>"Not secure" warnings, phone links that don't dial, broken forms, and old pages, fixed where your site lives now. From $199.</p></li>
+          <li><h3><a href="/local-seo/">Local SEO</a></h3><p>Google Business Profile, reviews, and matching listings so you show up when someone in {t["name"]} searches. $399/month, no contract.</p></li>
+        </ul>
+        <p class="price-note">{t["meet"]} Prefer not to meet? Everything works over the phone or a short video call.</p>
+      </div>
+    </div>
+  </section>
+""" + STEPS_HTML + f"""
+  <section class="sub-faq" id="faq">
+    <div class="wrap two">
+      <div>
+        <p class="eyebrow">Questions</p>
+        <h2 style="margin-top:.75rem">{t["name"]} questions.</h2>
+        <p class="lede" style="margin-top:1rem">Something else on your mind? Email <a href="mailto:{EMAIL}">{EMAIL}</a> and you'll hear back within one business day.</p>
+        <div class="svc-links"><p class="foot-h" style="color:var(--muted)">Nearby towns we serve</p>{nearby}</div>
+      </div>
+      <div>{faq_html(t["faqs"])}</div>
+    </div>
+  </section>
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>See how your {t["name"]} business shows up.</h2>
+      <p class="lede">Tell us about your business. We'll look at your site and Google listing and reply within one business day with what we found. No pressure, no obligation.</p>
+      <a class="btn btn-primary" href="/#contact">Request my free review</a>
+    </div>
+  </section>
+</main>
+{footer()}{SUB_SCRIPT}"""
+    out = ROOT / t["slug"] / "index.html"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(head(t["title"], t["desc"], path, graph) + "\n" + body, encoding="utf-8")
 
 
 def build_home():
@@ -259,7 +359,7 @@ def build_home():
                lambda m: "<!--HEADER-->\n" + header("") + "<!--/HEADER-->", h, flags=re.S)
     h = re.sub(r"<!--FOOTER-->.*?<!--/FOOTER-->",
                lambda m: "<!--FOOTER-->\n" + footer() + "<!--/FOOTER-->", h, flags=re.S)
-    f.write_text(h, encoding="utf-8")
+    f.write_text(linkify_area(h), encoding="utf-8")
 
 
 def build_404():
@@ -284,7 +384,7 @@ def build_404():
 
 
 def build_seo_files():
-    urls = ["/"] + [p["path"] for p in PAGES]
+    urls = ["/"] + [p["path"] for p in PAGES] + [f"/{t['slug']}/" for t in TOWN_PAGES]
     items = "".join(f"  <url><loc>{SITE}{u}</loc><lastmod>{TODAY}</lastmod></url>\n" for u in urls)
     (ROOT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -302,6 +402,8 @@ if __name__ == "__main__":
     build_home()
     for p in PAGES:
         build_service(p)
+    for t in TOWN_PAGES:
+        build_town(t)
     build_404()
     build_seo_files()
-    print("built:", ["/"] + [p["path"] for p in PAGES] + ["/404.html", "sitemap.xml", "robots.txt"])
+    print("built:", ["/"] + [p["path"] for p in PAGES] + [t["slug"] for t in TOWN_PAGES] + ["/404.html", "sitemap.xml", "robots.txt"])
