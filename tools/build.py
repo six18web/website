@@ -442,7 +442,7 @@ def build_seo_files():
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + items + "</urlset>\n",
         encoding="utf-8")
     (ROOT / "robots.txt").write_text(
-        f"User-agent: *\nAllow: /\nDisallow: /tools/\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
+        f"User-agent: *\nAllow: /\nDisallow: /tools/\nDisallow: /social/\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
 
 
 HOME_TITLE = "Web Design & Local SEO in Edwardsville, IL | Six18 Web"

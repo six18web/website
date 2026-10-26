@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
 Disallow: /tools/
+Disallow: /social/
 
 Sitemap: https://six18web.com/sitemap.xml
