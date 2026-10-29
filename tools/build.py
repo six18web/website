@@ -18,7 +18,7 @@ TOWN_LINK = {t['name']: f"/{t['slug']}/" for t in TOWN_PAGES}
 ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://six18web.com"
 TODAY = datetime.date.today().isoformat()
-EMAIL = "six18web@gmail.com"
+EMAIL = "hello@six18web.com"
 SOCIAL = [
     ("Facebook", "https://www.facebook.com/six18web"),
     ("Instagram", "https://www.instagram.com/six18web"),
@@ -398,7 +398,7 @@ PRIVACY = [
 </ul>
 <p>Each of these services handles data under its own privacy policy.</p>"""),
     ("How long we keep it", """<p>We keep review requests and client records as long as we need them to work with you and to keep accurate business and tax records. If you never become a client, you can ask us to delete your request at any time.</p>"""),
-    ("Your choices", """<p>Email <a href="mailto:six18web@gmail.com">six18web@gmail.com</a> to see the information we have about you, correct it, or ask us to delete it. We'll respond within a reasonable time, usually a few business days. If you'd rather not hear from us, just tell us and we'll stop.</p>"""),
+    ("Your choices", """<p>Email <a href="mailto:hello@six18web.com">hello@six18web.com</a> to see the information we have about you, correct it, or ask us to delete it. We'll respond within a reasonable time, usually a few business days. If you'd rather not hear from us, just tell us and we'll stop.</p>"""),
     ("Children", """<p>This site is meant for business owners and isn't directed at children under 13. We don't knowingly collect information from them.</p>"""),
     ("Changes", """<p>If we change this notice, we'll update the date at the top of this page.</p>"""),
 ]
