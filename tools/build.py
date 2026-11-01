@@ -19,6 +19,8 @@ ROOT = Path(__file__).resolve().parent.parent
 SITE = "https://six18web.com"
 TODAY = datetime.date.today().isoformat()
 EMAIL = "hello@six18web.com"
+PHONE = "(314) 474-6043"
+TEL = "+13144746043"
 SOCIAL = [
     ("Facebook", "https://www.facebook.com/six18web"),
     ("Instagram", "https://www.instagram.com/six18web"),
@@ -40,6 +42,7 @@ BUSINESS = {
     "alternateName": "Six18 Web Co.",
     "url": f"{SITE}/",
     "email": EMAIL,
+    "telephone": "+1-314-474-6043",
     "logo": f"{SITE}/logo.png",
     "image": f"{SITE}/og-image.png",
     "description": "Web design, website fixes, and local SEO for small businesses. "
@@ -144,6 +147,7 @@ def header(current=""):
       {links}<a href="/#pricing">Pricing</a>
       <a href="/#faq">FAQ</a>
     </nav>
+    <a class="head-phone" href="tel:{TEL}" aria-label="Call Six18 Web at {PHONE}"><span class="hp-full">{PHONE}</span><span class="hp-short">Call</span></a>
     <a class="btn btn-primary head-call" href="/#contact">Free review</a>
   </div>
 </header>
@@ -175,7 +179,7 @@ def footer():
     <div class="foot-brand">
       <a class="logo" href="/"><span class="logo-mark" aria-hidden="true">618</span><span>Six18 Web</span></a>
       <p>Web design, website fixes, and local SEO for small businesses. Based in Edwardsville &amp; Glen Carbon, Illinois. Working with shops nationwide.</p>
-      <p><a href="mailto:{EMAIL}">{EMAIL}</a></p>
+      <p><a href="tel:{TEL}">{PHONE}</a> · <a href="mailto:{EMAIL}">{EMAIL}</a></p>
     </div>
     <nav aria-label="Services"><p class="foot-h">Services</p><ul>{svc}<li><a href="/#pricing">Pricing</a></li><li><a href="/privacy/">Privacy</a></li></ul></nav>
     <div><p class="foot-h">Service area</p><p class="foot-towns">{" · ".join(town_link(t) for t in TOWNS)}, and anywhere in the U.S. by video call.</p></div>
