@@ -22,8 +22,8 @@ WEB_DESIGN = dict(
     service_name="Small business web design",
     price="950",
     title="Small Business Web Design in Edwardsville, IL | Six18 Web",
-    desc="Phone-first websites for small businesses in Edwardsville, Glen Carbon & the Metro East. Flat prices from $950, live in about two weeks. You own it.",
-    eyebrow="Web design · Edwardsville &amp; Glen Carbon",
+    desc="Phone-first websites for small businesses in Glen Carbon, Edwardsville & the Metro East. Flat prices from $950, live in about two weeks. You own it.",
+    eyebrow="Web design · Glen Carbon &amp; Edwardsville",
     h1="Small business web design that <em>gets you calls.</em>",
     lede="We design and build websites for local service businesses, shops, and restaurants: fast on a phone, easy to call from, and set up so the people searching nearby can actually find you.",
     price_line="Starter Site <b>$950</b> · Business Site <b>$2,800</b> · Flat price, written quote first",
@@ -82,8 +82,8 @@ WEB_DESIGN = dict(
       <div class="prose">
         <p class="eyebrow">Local, and remote</p>
         <h2 style="margin-top:.75rem">Right here in the 618.</h2>
-        <p>We're based in Edwardsville and Glen Carbon and happy to meet at your shop, your job site, or over coffee anywhere in Madison County and the Metro East. Outside the area, everything works just as well over a short video call.</p>
-        <div class="area"><span class="home">Edwardsville</span><span class="home">Glen Carbon</span><span>Maryville</span><span>Collinsville</span><span>Troy</span><span>Granite City</span><span>Alton</span><span>Highland</span></div>
+        <p>We're based in Glen Carbon and happy to meet at your shop, your job site, or over coffee anywhere in Madison County and the Metro East. Outside the area, everything works just as well over a short video call.</p>
+        <div class="area"><span class="home">Glen Carbon</span><span>Edwardsville</span><span>Maryville</span><span>Collinsville</span><span>Troy</span><span>Granite City</span><span>Alton</span><span>Highland</span></div>
       </div>
     </div>
   </section>
@@ -238,8 +238,8 @@ LOCAL_SEO = dict(
       <div class="prose">
         <p class="eyebrow">Where we work</p>
         <h2 style="margin-top:.75rem">Metro East and beyond.</h2>
-        <p>We know the local search landscape here: Edwardsville, Glen Carbon, Maryville, Collinsville, Troy, and the rest of Madison County. Local SEO works the same way for service businesses anywhere in the U.S., so we work with owners nationwide too.</p>
-        <div class="area"><span class="home">Edwardsville</span><span class="home">Glen Carbon</span><span>Maryville</span><span>Collinsville</span><span>Troy</span><span>Granite City</span><span>Alton</span><span>Highland</span></div>
+        <p>We know the local search landscape here: Glen Carbon, Edwardsville, Maryville, Collinsville, Troy, and the rest of Madison County. Local SEO works the same way for service businesses anywhere in the U.S., so we work with owners nationwide too.</p>
+        <div class="area"><span class="home">Glen Carbon</span><span>Edwardsville</span><span>Maryville</span><span>Collinsville</span><span>Troy</span><span>Granite City</span><span>Alton</span><span>Highland</span></div>
       </div>
     </div>
   </section>

@@ -28,7 +28,7 @@ SOCIAL = [
     ("X", "https://x.com/six18web"),
     ("LinkedIn", "https://www.linkedin.com/company/six18web"),
 ]
-TOWNS = ["Edwardsville", "Glen Carbon", "Maryville", "Collinsville", "Troy",
+TOWNS = ["Glen Carbon", "Edwardsville", "Maryville", "Collinsville", "Troy",
          "Granite City", "Alton", "Highland"]
 SERVICES = [  # (path, nav label, schema name)
     ("/web-design/", "Web design", "Small business web design"),
@@ -47,11 +47,11 @@ BUSINESS = {
     "logo": f"{SITE}/logo.png",
     "image": f"{SITE}/og-image.png",
     "description": "Web design, website fixes, and local SEO for small businesses. "
-                   "Based in Edwardsville and Glen Carbon, Illinois, serving small businesses nationwide.",
+                   "Based in Glen Carbon, Illinois, serving small businesses nationwide.",
     "slogan": "Websites that make your phone ring.",
     "priceRange": "$199–$2,800",
-    "address": {"@type": "PostalAddress", "addressLocality": "Edwardsville",
-                "addressRegion": "IL", "postalCode": "62025", "addressCountry": "US"},
+    "address": {"@type": "PostalAddress", "addressLocality": "Glen Carbon",
+                "addressRegion": "IL", "postalCode": "62034", "addressCountry": "US"},
     "areaServed": [{"@type": "City", "name": f"{t}, IL"} for t in TOWNS]
                   + [{"@type": "Country", "name": "United States"}],
     "knowsAbout": ["Web design", "Website repair", "Local SEO", "Google Business Profile",
@@ -179,7 +179,7 @@ def footer():
   <div class="wrap foot-grid">
     <div class="foot-brand">
       <a class="logo" href="/"><span class="logo-mark" aria-hidden="true">618</span><span>Six18 Web</span></a>
-      <p>Web design, website fixes, and local SEO for small businesses. Based in Edwardsville &amp; Glen Carbon, Illinois. Working with shops nationwide.</p>
+      <p>Web design, website fixes, and local SEO for small businesses. Based in Glen Carbon, Illinois. Working with shops nationwide.</p>
       <p><a href="tel:{TEL}">{PHONE}</a> · <a href="mailto:{EMAIL}">{EMAIL}</a></p>
     </div>
     <nav aria-label="Services"><p class="foot-h">Services</p><ul>{svc}<li><a href="/#pricing">Pricing</a></li><li><a href="/privacy/">Privacy</a></li></ul></nav>
@@ -429,7 +429,7 @@ def build_privacy():
   </section>
   <section>
     <div class="wrap"><div class="legal">{sections}
-      <h2>Contact</h2><p>Six18 Web · Edwardsville, Illinois · <a href="mailto:{EMAIL}">{EMAIL}</a></p>
+      <h2>Contact</h2><p>Six18 Web · Glen Carbon, Illinois · <a href="mailto:{EMAIL}">{EMAIL}</a></p>
     </div></div>
   </section>
 </main>
@@ -450,9 +450,9 @@ def build_seo_files():
         f"User-agent: *\nAllow: /\nDisallow: /tools/\nDisallow: /social/\n\nSitemap: {SITE}/sitemap.xml\n", encoding="utf-8")
 
 
-HOME_TITLE = "Web Design & Local SEO in Edwardsville, IL | Six18 Web"
-HOME_DESC = ("Web design, website fixes & local SEO for small businesses in Edwardsville, "
-             "Glen Carbon & the Metro East. Flat prices. Free 10-minute site review.")
+HOME_TITLE = "Web Design & Local SEO in Glen Carbon & Edwardsville, IL | Six18 Web"
+HOME_DESC = ("Web design, website fixes & local SEO for small businesses in Glen Carbon, "
+             "Edwardsville & the Metro East. Flat prices. Free 10-minute site review.")
 
 if __name__ == "__main__":
     build_home()

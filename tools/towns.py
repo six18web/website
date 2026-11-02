@@ -6,9 +6,9 @@ TOWNS = [
     dict(
         slug="edwardsville-il", name="Edwardsville", zip="62025",
         title="Edwardsville, IL Web Design & Local SEO | Six18 Web",
-        desc="Websites, website fixes, and local SEO for Edwardsville, IL businesses. Based in Edwardsville & Glen Carbon. Flat prices and a free 10-minute site review.",
+        desc="Websites, website fixes, and local SEO for Edwardsville, IL businesses. Based next door in Glen Carbon. Flat prices and a free 10-minute site review.",
         h1="Web design for <em>Edwardsville</em> businesses.",
-        lede="Six18 Web is based right here in Edwardsville and Glen Carbon. We build and fix websites for the shops, contractors, salons, and restaurants that keep this town running, and help them show up when someone nearby searches.",
+        lede="Six18 Web is based next door in Glen Carbon, a few minutes from downtown Edwardsville. We build and fix websites for the shops, contractors, salons, and restaurants that keep this town running, and help them show up when someone nearby searches.",
         local_h2="Built for how Edwardsville searches.",
         local=[
             "Edwardsville is the Madison County seat, a college town, and a busy place for small business, from Main Street storefronts to the contractors who work out of a truck. That mix means your customers are students and SIUE families, longtime residents, and people new to town who've never heard of you.",
@@ -18,7 +18,7 @@ TOWNS = [
         meet="We're happy to meet at your shop, your job site, or over coffee downtown.",
         nearby=["glen-carbon-il", "alton-il", "maryville-il", "troy-il"],
         faqs=[
-            ("Are you actually local to Edwardsville?", "Yes. Six18 Web is based in Edwardsville and Glen Carbon. We can meet in person anywhere in town, and everything also works over the phone or a short video call."),
+            ("Are you actually local to Edwardsville?", "Yes. Six18 Web is based next door in Glen Carbon. We can meet in person anywhere in Edwardsville, and everything also works over the phone or a short video call."),
             ("Do you help businesses near SIUE?", "Yes. If you serve students, staff, or visiting families, we'll make sure your site and Google listing make it easy for people who are new to the area to find you, see your hours, and call."),
             ("How do I show up for \"near me\" searches in Edwardsville?", "Start with a complete Google Business Profile, a website that names your services and Edwardsville clearly, and steady Google reviews. Our <a href=\"/local-seo/\">Local SEO</a> page explains how it works."),
         ],
@@ -28,7 +28,7 @@ TOWNS = [
         title="Glen Carbon, IL Web Design & Local SEO | Six18 Web",
         desc="Glen Carbon, IL web design, website fixes, and local SEO from a team based right here. Phone-first sites, flat prices, and a free 10-minute site review.",
         h1="Glen Carbon web design, <em>from Glen Carbon.</em>",
-        lede="We're based in Glen Carbon and Edwardsville. We build fast, phone-first websites for Glen Carbon businesses and set them up so neighbors find you before they find a chain.",
+        lede="We're based right here in Glen Carbon. We build fast, phone-first websites for Glen Carbon businesses and set them up so neighbors find you before they find a chain.",
         local_h2="Glen Carbon customers search close to home.",
         local=[
             "Glen Carbon sits between Edwardsville and Maryville, and a lot of local businesses here serve customers on both sides of that line. If your website and Google listing only mention one town, you're invisible to people searching from the other.",
