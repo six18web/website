@@ -26,6 +26,7 @@ SOCIAL = [
     ("Instagram", "https://www.instagram.com/six18web"),
     ("TikTok", "https://www.tiktok.com/@six18.web"),
     ("X", "https://x.com/six18web"),
+    ("LinkedIn", "https://www.linkedin.com/company/six18web"),
 ]
 TOWNS = ["Edwardsville", "Glen Carbon", "Maryville", "Collinsville", "Troy",
          "Granite City", "Alton", "Highland"]
